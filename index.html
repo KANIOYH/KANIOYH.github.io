@@ -76,6 +76,87 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-画册" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/10/%E7%94%BB%E5%86%8C/" class="article-date">
+  <time class="dt-published" datetime="2024-01-10T03:06:13.000Z" itemprop="datePublished">2024-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/10/%E7%94%BB%E5%86%8C/">画册</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="/./2.jpg" alt="avatar"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/10/%E7%94%BB%E5%86%8C/" data-id="clr77ate900012sni1oddcqkk" data-title="画册" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-关于我的介绍" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/10/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time class="dt-published" datetime="2024-01-10T03:05:54.000Z" itemprop="datePublished">2024-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/10/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84%E4%BB%8B%E7%BB%8D/">关于我的介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>Chen Yuanhui</p>
+<p>武汉理工大学    2019~2023</p>
+<p>南开大学        2023~2026</p>
+<p><em>研究内容</em>：GPU虚拟化 并行计算    SPDK</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/10/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84%E4%BB%8B%E7%BB%8D/" data-id="clr77ate700002sni579gfnbs" data-title="关于我的介绍" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-GPU-GPU-CUDA-driver-API与CUDA-runtime-API混合使用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/01/10/GPU-GPU-CUDA-driver-API%E4%B8%8ECUDA-runtime-API%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8/" class="article-date">
@@ -121,51 +202,6 @@
 
 
   
-    <article id="post-copy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/01/10/copy/" class="article-date">
-  <time class="dt-published" datetime="2024-01-10T02:35:55.000Z" itemprop="datePublished">2024-01-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/01/10/copy/">[GPU] CUDA driver API与CUDA runtime API混合使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><em><strong>介绍</strong></em></p>
-<p>有时候我们需要在进程内混合使用CUDA driver API与CUDA runtime API,一般来说我们只用其中一种即可，但是有时候需要driver API的细粒度控制</p>
-<p><em><strong>用法</strong></em><br>CUDA runtime API隐藏了CUDA上下文，我们主要的目标就是让CUDA runtime API隐藏起来的上下文绑定到当前CUDA driver API。</p>
-<p>看看代码怎么写</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cuInit(<span class="number">0</span>);</span><br><span class="line">CUdevice device;</span><br><span class="line">CUcontext* context;</span><br><span class="line">cuDeviceGet(&amp;device, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*第一次调用cuda代码会隐式产生一个context*/</span></span><br><span class="line">cudaSetDevice(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*取得context栈顶的context*/</span></span><br><span class="line">cuCtxGetCurrent(context);</span><br></pre></td></tr></table></figure>
-<p>此时CUDA driver API与CUDA runtime API就在一个上下文了。<br>需要注意<code>cudaSetDevice</code>会隐式生成context只在高版本cuda中有</p>
-<p>版本低可以用其它的cuda开头的runtime API来隐式生成——(例如<code>cudaMalloc</code>这种)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/01/10/copy/" data-id="clr76zfb80001p0nickqr9yw8" data-title="[GPU] CUDA driver API与CUDA runtime API混合使用" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/01/10/hello-world/" class="article-date">
@@ -188,8 +224,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>Chen Yuanhui</p>
+        <h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>Chen Yuanhui</p>
 <p>武汉理工大学    2019~2023</p>
 <p>南开大学        2023~2026</p>
 <p><em>研究内容</em>：GPU虚拟化 并行计算    SPDK</p>
@@ -240,11 +275,15 @@
       <ul>
         
           <li>
-            <a href="/2024/01/10/GPU-GPU-CUDA-driver-API%E4%B8%8ECUDA-runtime-API%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8/">[GPU] GPU-CUDA-driver-API与CUDA-runtime-API混合使用</a>
+            <a href="/2024/01/10/%E7%94%BB%E5%86%8C/">画册</a>
           </li>
         
           <li>
-            <a href="/2024/01/10/copy/">[GPU] CUDA driver API与CUDA runtime API混合使用</a>
+            <a href="/2024/01/10/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84%E4%BB%8B%E7%BB%8D/">关于我的介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/10/GPU-GPU-CUDA-driver-API%E4%B8%8ECUDA-runtime-API%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8/">[GPU] GPU-CUDA-driver-API与CUDA-runtime-API混合使用</a>
           </li>
         
           <li>
